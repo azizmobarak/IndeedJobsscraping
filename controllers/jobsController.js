@@ -4,7 +4,7 @@ const cron = require('node-cron');
 
 const jobs = () => {
     console.log("start")
-    cron.schedule('* * */12 * * *', () => {
+    cron.schedule('* */10 * * * *', () => {
         try {
             (async() => {
                 const browser = await puppeteer.launch({
@@ -80,7 +80,7 @@ const jobs = () => {
                 }
 
                 //format array
-                const FullList = await FormatArray(collectjoblists, jobList.length);
+                const FullList = await FormatArray(collectjoblists, collectjoblists.length);
                 // collect jobs main content (application url & article)
                 try {
                     await getjobcontent(browser, FullList, pageNumber);
