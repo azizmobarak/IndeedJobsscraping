@@ -4,7 +4,7 @@ const cron = require('node-cron');
 
 const jobs = () => {
     console.log("start")
-    cron.schedule('* */10 * * * *', () => {
+    cron.schedule('* */12 * * *', () => {
         try {
             (async() => {
                 const browser = await puppeteer.launch({
@@ -36,8 +36,7 @@ const jobs = () => {
                         await page.goto('https://www.indeed.fr/emplois?q=Jobs+France&start=' + count * 10, { waitUntil: "domcontentloaded", timeout: 0 });
                     } catch {
                         //982011 : error will opening the page
-                        await res.json({ message: "error", data: "error code : 289011" })
-                        await browser.close();
+                        //await res.json({ message: "error", data: "error code : 289011" })
                     }
                     count++;
 
