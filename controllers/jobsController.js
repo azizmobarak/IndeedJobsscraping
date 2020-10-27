@@ -4,7 +4,7 @@ const cron = require('node-cron');
 
 const jobs = () => {
     console.log("start")
-    cron.schedule('* */12 * * *', () => {
+    cron.schedule('*/2 * * * *', () => {
         try {
             (async() => {
                 const browser = await puppeteer.launch({
