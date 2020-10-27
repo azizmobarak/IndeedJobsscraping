@@ -69,6 +69,7 @@ const jobs = () => {
                         });
 
                         collectjoblists.push(jobList);
+                        console.log('joblistlenght ' + collectjoblists.length)
 
                     } catch {
                         //543889 : in the first function when trying to get the data from pages, each page
