@@ -4,7 +4,7 @@ const cron = require('node-cron');
 
 const jobs = () => {
     console.log("start")
-    cron.schedule('*/2 * * * *', () => {
+    cron.schedule('*/1 * * * *', () => {
         try {
             (async() => {
                 const browser = await puppeteer.launch({
@@ -69,7 +69,6 @@ const jobs = () => {
                         });
 
                         collectjoblists.push(jobList);
-                        console.log('joblistlenght ' + collectjoblists.length)
 
                     } catch {
                         //543889 : in the first function when trying to get the data from pages, each page
@@ -79,7 +78,8 @@ const jobs = () => {
                          });*/
                     }
                 }
-
+                console.log("wait")
+                await page.waitFor(4000);
                 //format array
                 const FullList = await FormatArray(collectjoblists, collectjoblists.length);
                 // collect jobs main content (application url & article)
@@ -112,6 +112,7 @@ const FormatArray = async(array, lenght) => {
     array.map((item) => {
         for (var i = 0; i < lenght; i++) {
             itembyitem.push(item[i]);
+            console.log(item[i])
         }
     });
     return itembyitem;
