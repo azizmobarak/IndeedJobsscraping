@@ -108,11 +108,11 @@ const jobs = () => {
 
 //format the array
 const FormatArray = async(array, lenght) => {
+    console.log(array.length)
     var itembyitem = [];
     array.map((item) => {
         for (var i = 0; i < lenght; i++) {
             itembyitem.push(item[i]);
-            console.log(item[i])
         }
     });
     return itembyitem;
