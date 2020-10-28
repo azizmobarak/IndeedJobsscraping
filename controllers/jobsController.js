@@ -81,7 +81,14 @@ const jobs = () => {
                 console.log("wait")
                 await page.waitFor(4000);
                 //format array
-                const FullList = await FormatArray(collectjoblists, collectjoblists.length);
+                const FullList = [];
+                ////
+                collectjoblists.map((item) => {
+                    for (var i = 0; i < collectjoblists.length + 1; i++) {
+                        FullList.push(item[i]);
+                    }
+                });
+
                 // collect jobs main content (application url & article)
                 try {
                     await getjobcontent(browser, FullList, pageNumber);
@@ -111,11 +118,7 @@ const FormatArray = async(array, lenght) => {
     console.log(array.length)
     var itembyitem = [];
     try {
-        array.map((item) => {
-            for (var i = 1; i < lenght + 1; i++) {
-                itembyitem.push(item[i]);
-            }
-        });
+
     } catch (e) {
         console.log(e);
     }
