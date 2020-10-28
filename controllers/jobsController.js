@@ -4,7 +4,7 @@ const cron = require('node-cron');
 const { formatError } = require('graphql');
 
 const jobs = () => {
-    console.log("start")
+    console.log("last")
     cron.schedule('*/1 * * * *', () => {
         try {
             (async() => {
