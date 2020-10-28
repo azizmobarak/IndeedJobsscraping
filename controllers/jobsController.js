@@ -53,7 +53,6 @@ const jobs = () => {
 
                                 for (var i = 0; i < titles.length; i++) {
 
-
                                     job.push({
                                         url: titles[i].href,
                                         title: titles[i].textContent,
@@ -69,7 +68,9 @@ const jobs = () => {
                             }
                         });
 
-                        collectjoblists.push(jobList);
+                        console.log('near list')
+                        console.log(jobList)
+                        await collectjoblists.push(jobList);
 
                     } catch {
                         //543889 : in the first function when trying to get the data from pages, each page
@@ -110,7 +111,6 @@ const jobs = () => {
 
 //format the array
 const FormatArray = async(array, length) => {
-    console.log(array)
     var itembyitem = [];
     try {
         array.map((item) => {
