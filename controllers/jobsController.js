@@ -112,7 +112,7 @@ const FormatArray = async(array, lenght) => {
     var itembyitem = [];
     try {
         array.map((item) => {
-            for (var i = 0; i < lenght; i++) {
+            for (var i = 1; i < lenght + 1; i++) {
                 itembyitem.push(item[i]);
             }
         });
