@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const Jobs = require('../modules/jobs');
 const cron = require('node-cron');
+const { formatError } = require('graphql');
 
 const jobs = () => {
     console.log("start")
@@ -81,13 +82,7 @@ const jobs = () => {
                 console.log("wait")
                 await page.waitFor(4000);
                 //format array
-                const FullList = [];
-                ////
-                collectjoblists.map((item) => {
-                    for (var i = 0; i < collectjoblists.length + 1; i++) {
-                        FullList.push(item[i]);
-                    }
-                });
+                const FullList = await FormatArray(collectjoblists, collectjoblists.length)
 
                 // collect jobs main content (application url & article)
                 try {
@@ -114,11 +109,17 @@ const jobs = () => {
 
 
 //format the array
-const FormatArray = async(array, lenght) => {
+const FormatArray = async(array, length) => {
     console.log(array.length)
     var itembyitem = [];
     try {
-
+        array.map((item) => {
+            for (var i = 0; i < length; i++) {
+                itembyitem.push(item[i]);
+                console.log(item[i]);
+                console.log('here')
+            }
+        });
     } catch (e) {
         console.log(e);
     }
