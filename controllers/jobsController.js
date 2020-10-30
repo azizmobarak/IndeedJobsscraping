@@ -9,8 +9,6 @@ const jobs = () => {
         try {
             (async() => {
                 const browser = await puppeteer.launch({
-                    timeout: 50000,
-                    headless: true,
                     args: ['--no-sandbox']
                 });
 

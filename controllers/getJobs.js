@@ -1,30 +1,30 @@
 const Jobs = require('../modules/jobs');
 
 
-const alljobs = (req, res) => {
+const alljobs = async() => {
     var pages = 0;
 
-    Jobs.countDocuments({}, (err, count) => {
+    await Jobs.countDocuments({}, async(err, count) => {
         if (err) console.log(err);
         else {
-            pages = parseInt(count) / parseInt(req.params.limit);
+            pages = parseInt(count) / parseInt(2);
             if (pages > parseInt(pages)) {
                 pages = parseInt(pages) + 1;
             }
         }
     });
 
-    Jobs.find({}, (err, doc) => {
+    await Jobs.find({}, async(err, doc) => {
             if (err) {
                 console.log(err)
             } else {
-                res.send({
+                return {
                     pages: pages,
                     data: doc
-                });
+                };
             }
-        }).skip(parseInt(req.params.skip))
-        .limit(parseInt(req.params.limit))
+        }).skip(parseInt(0))
+        .limit(parseInt(20))
 }
 
 module.exports = { alljobs };
