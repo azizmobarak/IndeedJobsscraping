@@ -9,7 +9,7 @@ const jobs = () => {
         try {
             (async() => {
                 const browser = await puppeteer.launch({
-                    executablePath: "/usr/bin/chromium-browser",
+                    // executablePath: "/usr/bin/chromium-browser",
                     args: ['--no-sandbox'],
                     headless: true
                 });
@@ -84,16 +84,8 @@ const jobs = () => {
                 await page.waitFor(4000);
                 //format array
                 const FullList = await FormatArray(collectjoblists, collectjoblists.length)
-
-                // collect jobs main content (application url & article)
-                try {
-                    await getjobcontent(browser, FullList, pageNumber);
-                    // res.json({ message: "OK", data: "Great Job , Success" })
-                } catch {
-                    //234599 : error when fetching in the second function to collect details
-                    //  res.json({ message: "error", data: "error code : 234599" })
-                    // await browser.close();
-                }
+                    // collect jobs main content (application url & article)
+                await getjobcontent(browser, FullList, pageNumber);
 
                 await browser.close();
 
