@@ -10,7 +10,8 @@ const jobs = () => {
             (async() => {
                 const browser = await puppeteer.launch({
                     executablePath: "/usr/bin/chromium-browser",
-                    args: ['--no-sandbox']
+                    args: ['--no-sandbox'],
+                    headless: true
                 });
 
                 const page = await browser.newPage();
