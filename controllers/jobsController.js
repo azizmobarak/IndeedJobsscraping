@@ -68,7 +68,7 @@ const jobs = () => {
                             }
                         });
 
-                        console.log('near list')
+                        console.log('brfore list')
                         console.log(jobList)
                         await collectjoblists.push(jobList);
 
@@ -80,8 +80,6 @@ const jobs = () => {
                          });*/
                     }
                 }
-                console.log("wait")
-                await page.waitFor(4000);
                 //format array
                 const FullList = await FormatArray(collectjoblists, collectjoblists.length)
                     // collect jobs main content (application url & article)
@@ -103,13 +101,13 @@ const jobs = () => {
 
 //format the array
 const FormatArray = async(array, length) => {
+    console.log("length: " + length)
     var itembyitem = [];
     try {
         array.map((item) => {
             for (var i = 0; i < length; i++) {
                 itembyitem.push(item[i]);
             }
-            console.log(item)
         });
     } catch (e) {
         console.log(e);
