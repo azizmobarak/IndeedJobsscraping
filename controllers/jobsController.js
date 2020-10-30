@@ -117,6 +117,7 @@ const FormatArray = async(array, length) => {
             for (var i = 0; i < length; i++) {
                 itembyitem.push(item[i]);
             }
+            console.log(item)
         });
     } catch (e) {
         console.log(e);
