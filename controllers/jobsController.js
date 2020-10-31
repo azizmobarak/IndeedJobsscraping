@@ -88,12 +88,13 @@ const jobs = () => {
                 await browser.close();
 
             })();
-        } catch {
+        } catch (e) {
             //1000 the whole app code contain a bug
             /* res.json({
                  message: "error",
                  data: "error code : 1000"
              });*/
+            console.log(e)
         }
     });
 }
