@@ -9,7 +9,7 @@ const jobs = () => {
         try {
             (async() => {
                 const browser = await puppeteer.launch({
-                    // executablePath: "/usr/bin/chromium-browser",
+                    executablePath: "/usr/bin/chromium-browser",
                     args: ['--no-sandbox'],
                     headless: true
                 });
